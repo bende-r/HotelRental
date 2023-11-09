@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             BackgroundColor="WhiteSmoke"
+             x:Class="HotelRental.EditRoom.EditRoomPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <!-- Заголовок страницы -->
+            <Label Text="Аренда номеров в отелях" HorizontalOptions="CenterAndExpand" FontSize="24" Margin="0,10,0,20" TextColor="Black"/>
+
+            <!-- Список номеров отеля с использованием ListView и data binding -->
+            <ListView ItemsSource="{Binding HotelRooms}" HasUnevenRows="True" SelectedItem="{Binding SelectedRoom, Mode=TwoWay}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Padding="10">
+                                <Label TextColor="Black" Text="{Binding Number}" FontAttributes="Bold" FontSize="18" />
+                                <Label Text="{Binding Description}" FontSize="16" TextColor="Black"/>
+                                <Label Text="{Binding PricePerNight, StringFormat='Цена: {0:C}'}" FontSize="16" TextColor="Black"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <!-- Кнопки для действий: Добавить, Редактировать, Удалить -->
+            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                <Entry Placeholder="Номер комнаты" Text="{Binding NewRoomNumber}" TextColor="Black" />
+                <Entry Placeholder="Описание" Text="{Binding NewRoomDescription}" TextColor="Black"/>
+                <Entry Placeholder="Цена за ночь" Text="{Binding NewRoomPrice}" TextColor="Black"/>
+                <Button Text="Назад" Clicked="BackButton_Clicked" />
+                <Button Text="Сохранить изменения" Clicked="EditButton_Clicked"/>
+               
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

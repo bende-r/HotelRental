@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    BackgroundColor="WhiteSmoke"
+             x:Class="HotelRental.EditHotel.EditHotelPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <ListView ItemsSource="{Binding Hotels}" HasUnevenRows="True" SelectedItem="{Binding SelectedHotel, Mode=TwoWay}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout>
+                                <Label Text="{Binding Name}" TextColor="Black"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                <Entry x:Name="htlNm" Placeholder="Название" Text="{Binding NewHotelName}" TextColor="Black"/>
+                <Button Text="Назад" Clicked="BackButton_Clicked" />
+                <Button Text="Изменить отель" Clicked="EditButton_Clicked" />
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
